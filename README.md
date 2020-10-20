@@ -73,7 +73,7 @@ config.cache_store = :mem_cache_store, url
 
 ### Dalli
 
-You can also use the [Dalli gem](https://github.com/petergoldstein/dalli) directly:
+You can also use a memcached client like the [Dalli gem](https://github.com/petergoldstein/dalli) directly:
 
 ```ruby
 require 'dalli'
