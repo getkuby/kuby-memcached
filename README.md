@@ -11,6 +11,8 @@ The memcached plugin provides the ability to stand up arbitrary memcached instan
 Add the kuby-memcached gem to your Gemfile, then add a memcached instance like this:
 
 ```ruby
+require 'kuby/memcached'
+
 Kuby.define(:production) do
   kubernetes do
 
@@ -60,7 +62,13 @@ In your Rails config (eg. config/environments/production.rb), point your cache s
 
 ```ruby
 Kuby.load!
-config.cache_store = :mem_cache_store, Kuby.environment.kubernetes.plugin(:memcached).instance(:my_rails_cache).url
+
+url = Kuby.environment.kubernetes
+  .plugin(:memcached)
+  .instance(:my_rails_cache)
+  .url
+
+config.cache_store = :mem_cache_store, url
 ```
 
 ### Dalli
